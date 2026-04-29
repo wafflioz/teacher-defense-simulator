@@ -23,7 +23,7 @@ public class Signore extends Tower {
             case 1:
                 damage = 2;
                 range = 4;
-                cooldown = 1;
+                cooldown = 0.5;
                 upgradeCost = 250;
                 break;
             case 2:
@@ -40,5 +40,7 @@ public class Signore extends Tower {
                 break;
         }
     }
+
+
 
 }

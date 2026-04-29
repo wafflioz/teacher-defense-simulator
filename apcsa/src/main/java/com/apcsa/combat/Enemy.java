@@ -1,5 +1,7 @@
 package com.apcsa.combat;
 
+import com.apcsa.GameWorld;
+
 public abstract class Enemy {
 
     protected int hp;
@@ -30,8 +32,9 @@ public abstract class Enemy {
 
         dead = false;
         reachedEnd = false;
-    }
 
+        GameWorld.enemies.add(this);
+    }
     /**
      * Updates enemy for one frame of the game.
      * For now, this moves the enemy to the right based on its speed.
@@ -54,7 +57,16 @@ public abstract class Enemy {
         if (hp <= 0) {
             hp = 0;
             dead = true;
+            remove(this);
         }
+    }
+
+    public void add(Enemy enemy){
+        GameWorld.enemies.add(enemy);
+    }
+
+    public void remove(Enemy enemy){
+        GameWorld.enemies.remove(enemy);
     }
 
     public boolean isDead() {

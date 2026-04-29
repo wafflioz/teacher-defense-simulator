@@ -2,6 +2,8 @@ package com.apcsa.combat;
 
 import java.util.ArrayList;
 
+import com.apcsa.GameWorld;
+
 public abstract class Tower {
 
     //enum
@@ -36,6 +38,7 @@ public abstract class Tower {
         tileY = tY;
         state = TowerState.IDLE;
         shootAnimationTimer = 0;
+        add(this);
     }
 
     //non-abstract methods
@@ -50,7 +53,15 @@ public abstract class Tower {
 
         return false;
     }
+
+    public void add(Tower tower){
+        GameWorld.towers.add(tower);
+    }
    
+    public void remove(Tower tower){
+        GameWorld.towers.remove(tower);
+    }
+
     /**
      * Checks to see if player can upgrade, if they can, it increases their level, calls function to update stats
      * @param money
