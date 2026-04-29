@@ -106,7 +106,6 @@ public abstract class Tower {
     }
 
     /**
-     * Updates this tower for one frame of the game.
      * The tower looks for a target, faces the target, waits for its cooldown,
      * and attacks when it is ready.
      *
