@@ -10,8 +10,8 @@ import javafx.stage.Stage;
 /**
  * JavaFX App
  */
-public class Main extends Application {
-
+/* public class Main extends Application {
+    
     @Override
     public void start(Stage stage) {
         var javaVersion = SystemInfo.javaVersion();
@@ -27,4 +27,4 @@ public class Main extends Application {
         launch();
     }
 
-}
+} */

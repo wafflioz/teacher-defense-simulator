@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class TestCombat { //class to test what Neelesh made
 
     public static void main(String[] args) {
-        Tower tower = new Signore(0, 0);
+        Tower tower = new Signore(4, 0);
         Enemy enemy = new FulkSmallestMinion(3, 0);
 
         ArrayList<Enemy> enemies = new ArrayList<>();
@@ -18,7 +18,7 @@ public class TestCombat { //class to test what Neelesh made
 
         long lastTime = System.nanoTime();
 
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             long now = System.nanoTime();
             double deltaTime = (now - lastTime) / 1_000_000_000.0;
             lastTime = now;

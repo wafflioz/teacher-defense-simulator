@@ -7,7 +7,7 @@ public abstract class Tower {
     //enum
     public enum TowerState {
         IDLE,
-        WAITING,
+        COOLDOWN,
         SHOOTING
     }
 
@@ -132,7 +132,7 @@ public abstract class Tower {
 
         if (cooldownTimer > 0) {
             cooldownTimer -= deltaTime;
-            state = TowerState.WAITING;
+            state = TowerState.COOLDOWN;
             return;
         }
 
