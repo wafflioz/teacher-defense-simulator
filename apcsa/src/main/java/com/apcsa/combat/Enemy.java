@@ -57,16 +57,7 @@ public abstract class Enemy {
         if (hp <= 0) {
             hp = 0;
             dead = true;
-            remove(this);
         }
-    }
-
-    public void add(Enemy enemy){
-        GameWorld.enemies.add(enemy);
-    }
-
-    public void remove(Enemy enemy){
-        GameWorld.enemies.remove(enemy);
     }
 
     public boolean isDead() {

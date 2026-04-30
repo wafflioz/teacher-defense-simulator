@@ -31,6 +31,8 @@ public abstract class Tower {
     protected double shootAnimationTimer;
     protected TowerState state;
 
+    protected boolean removed;
+
     //constructor
     public Tower(int tX, int tY){
         level = 1;
@@ -38,7 +40,8 @@ public abstract class Tower {
         tileY = tY;
         state = TowerState.IDLE;
         shootAnimationTimer = 0;
-        add(this);
+        removed = false;
+        GameWorld.towers.add(this);
     }
 
     //non-abstract methods
@@ -53,13 +56,13 @@ public abstract class Tower {
 
         return false;
     }
-
-    public void add(Tower tower){
-        GameWorld.towers.add(tower);
-    }
    
-    public void remove(Tower tower){
-        GameWorld.towers.remove(tower);
+    public boolean isRemoved(){
+        return removed;
+    }
+
+    public void remove() {
+        removed = true;
     }
 
     /**

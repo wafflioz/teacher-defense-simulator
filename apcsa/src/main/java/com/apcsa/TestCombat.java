@@ -7,10 +7,10 @@ public class TestCombat {
 
     public static void main(String[] args) {
 
+        GameWorld.startGameLoop();
+
         new Signore(4, 0);
         new FulkSmallestMinion(3, 0);
-
-        GameWorld.runGameLoop();
 
     }
 }
