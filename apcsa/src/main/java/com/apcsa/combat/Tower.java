@@ -33,6 +33,11 @@ public abstract class Tower {
 
     protected boolean removed;
 
+    protected int animationFrame;
+    protected double animationFrameTimer;
+    protected int animationFrameCount = 8;
+    protected double animationFrameDuration = 0.2;
+
     //constructor
     public Tower(int tX, int tY){
         level = 1;
@@ -63,6 +68,14 @@ public abstract class Tower {
 
     public void remove() {
         removed = true;
+    }
+
+    public void updateAnimation(double deltaTime){
+        animationFrameTimer += deltaTime;
+        while (animationFrameTimer >= animationFrameDuration){
+            animationFrameTimer -= animationFrameDuration;
+            animationFrame = (animationFrame + 1) % animationFrameCount;
+        }
     }
 
     /**
@@ -133,27 +146,27 @@ public abstract class Tower {
             state = TowerState.IDLE;
             cooldownTimer = cooldown;
             shootAnimationTimer = 0;
-            return;
+        } 
+        else {
+            faceTarget(target);
+
+            if (shootAnimationTimer > 0) {
+                shootAnimationTimer -= deltaTime;
+                state = TowerState.SHOOTING;
+            } 
+            else if (cooldownTimer > 0) {
+                cooldownTimer -= deltaTime;
+                state = TowerState.COOLDOWN;
+            } 
+            else {
+                attack(target);
+                shootAnimationTimer = 0.2;
+                cooldownTimer = cooldown;
+                state = TowerState.SHOOTING;
+            }
         }
 
-        faceTarget(target);
-
-        if (shootAnimationTimer > 0) {
-            shootAnimationTimer -= deltaTime;
-            state = TowerState.SHOOTING;
-            return;
-        }
-
-        if (cooldownTimer > 0) {
-            cooldownTimer -= deltaTime;
-            state = TowerState.COOLDOWN;
-            return;
-        }
-
-        attack(target);
-        shootAnimationTimer = 0.2;
-        cooldownTimer = cooldown;
-        state = TowerState.SHOOTING;
+        updateAnimation(deltaTime);
     }
 
     /**
@@ -197,6 +210,9 @@ public abstract class Tower {
     }
     public Enemy getTarget() {
         return target;
+    }
+    public int getAnimationFrame(){
+        return animationFrame;
     }
 
     //abstract methods
