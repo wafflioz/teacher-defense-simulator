@@ -219,6 +219,10 @@ public abstract class Tower {
         return animationFrame;
     }
 
+    public int getAnimationFrameCount(){
+        return animationFrameCount;
+    }
+
     //abstract methods
     /**
      * Changes damage, range, cooldown and cost based on level
