@@ -35,7 +35,7 @@ public abstract class Tower {
 
     protected int animationFrame;
     protected double animationFrameTimer;
-    protected int animationFrameCount = 8;
+    protected int animationFrameCount = 7;
     protected double animationFrameDuration = 0.2;
 
     //constructor
