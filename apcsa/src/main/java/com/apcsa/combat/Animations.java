@@ -2,12 +2,14 @@ package com.apcsa.combat;
 
 import com.apcsa.combat.Tower;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
+import javafx.scene.image.ImageView;
 
 public class Animations {
 
-    public static final int FRAME_WIDTH = 1600;
-    public static final int FRAME_HEIGHT = 1600;
+    public static final int FRAME_WIDTH = 512;
+    public static final int FRAME_HEIGHT = 512;
 
     public static String[] getTowerFrame(Tower tower) {
         
@@ -31,7 +33,16 @@ public class Animations {
 
         Image img = new Image(Animations.class.getResourceAsStream(path));
 
-        System.out.println("aslkdjfasdf : " + img);
+        ImageView view = new ImageView(img);
+
+        view.setViewport(
+            new Rectangle2D(
+                Integer.parseInt(data[2]), //x
+                0,                    //y   
+                FRAME_WIDTH,
+                FRAME_HEIGHT
+            )
+        );
         
     }
 }
