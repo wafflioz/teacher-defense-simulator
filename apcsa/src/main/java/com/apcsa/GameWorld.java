@@ -1,6 +1,8 @@
 package com.apcsa;
 
 import java.util.*;
+
+import com.apcsa.combat.Animations;
 import com.apcsa.combat.Enemy;
 import com.apcsa.combat.Tower;
 
@@ -44,6 +46,7 @@ public class GameWorld {
                     towerIt.remove();
                 } else {
                     tower.update(deltaTime, enemies);
+                    Animations.updateAnimations(tower);
                 }
             }
 

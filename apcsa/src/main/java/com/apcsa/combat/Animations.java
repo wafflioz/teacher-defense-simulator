@@ -1,35 +1,37 @@
 package com.apcsa.combat;
 
 import com.apcsa.combat.Tower;
-import javafx.geometry.Rectangle2D;
+
+import javafx.scene.image.Image;
 
 public class Animations {
 
-    public static final int FRAME_WIDTH = 64;
-    public static final int FRAME_HEIGHT = 64;
+    public static final int FRAME_WIDTH = 1600;
+    public static final int FRAME_HEIGHT = 1600;
 
-    public static Rectangle2D getTowerFrame(Tower tower) {
-        int col = tower.getAnimationFrame();
-        int row = getStateRow(tower.getState());
+    public static String[] getTowerFrame(Tower tower) {
+        
+        String towerName = tower.getName();
+        int frame = tower.getAnimationFrame();
+        String state = tower.getState().toString();
 
-        return new Rectangle2D(
-            col * FRAME_WIDTH,
-            row * FRAME_HEIGHT,
-            FRAME_WIDTH,
-            FRAME_HEIGHT
-        );
+        String[] ret = new String[3];
+
+        ret[0] = towerName; //name
+        ret[1] = state + ".png";  //state
+        ret[2] = "" + frame * FRAME_WIDTH; //frame
+
+        return ret;
     }
 
-    private static int getStateRow(Tower.TowerState state) {
-        switch (state) {
-            case IDLE:
-                return 0;
-            case COOLDOWN:
-                return 1;
-            case SHOOTING:
-                return 2;
-            default:
-                return 0;
-        }
+    public static void updateAnimations(Tower tower) {
+        String[] data = getTowerFrame(tower);
+
+        String path = "/fxml/sprites/" + data[0] + "/" + data[1];
+
+        Image img = new Image(Animations.class.getResourceAsStream(path));
+
+        System.out.println("aslkdjfasdf : " + img);
+        
     }
 }

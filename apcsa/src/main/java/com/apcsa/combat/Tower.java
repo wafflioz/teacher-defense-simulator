@@ -180,6 +180,10 @@ public abstract class Tower {
         }
     }
 
+    public String getName(){
+        return getClass().getSimpleName();
+    }
+
     //getters
     public int getDamage() {
         return damage;
